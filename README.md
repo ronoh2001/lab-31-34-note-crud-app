@@ -1,4 +1,4 @@
-![cf](http://i.imgur.com/7v5ASc8.png) lab-31-32-note-crud-app
+![cf](http://i.imgur.com/7v5ASc8.png) lab-31-32 note-crud-app
 ====
 
 [![Issues?](https://img.shields.io/badge/Issues%3F-Ask%20for%20Help!-55cbe0.svg)](https://github.com/codefellows/seattle-javascript-401n1/issues/new)
