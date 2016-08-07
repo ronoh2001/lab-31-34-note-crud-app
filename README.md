@@ -18,7 +18,6 @@
  * app/service
  * app/html
  * app/scss/vendor
- * app/asset/image
 * create a **_theme.scss** partial 
  * add three color variables
 * create a **base.scss** file 
