@@ -2,59 +2,53 @@
 
 require('./list.scss');
 const angular = require('angular');
-const demoApp = angular.module('demoApp');
-
-demoApp.directive('appList', function(){
-  return{
+angular.module('demoApp').directive('appList', function(){
+  return {
     restrict: 'E',
     replace: true,
     template: require('./list.html'),
-    controller: 'ListController',
+    controller: ['$log', 'listService', 'noteService', ListController],
     controllerAs: 'listCtrl',
     bindToController: true,
-    scope:{
+    scope: {
       list: '='
     }
   };
 });
 
-demoApp.controller('ListController', ['$q', '$log', 'listService', 'noteService', ListController]);
-
-function ListController($q, $log, listService, noteService){
+function ListController($log, listService, noteService){
   this.deleteList = function(){
     $log.debug('listCtrl.deleteList');
     listService.deleteList(this.list._id)
     .catch(() => {
-      alert('you failed');
+      alert('you failed to deleteme yanoob');
     });
   };
-  this.createNote =function(data){
+
+  this.createNote = function(data){
     $log.debug('listCtrl.createNote');
-    return $q((resolve, reject) =>{
-      data.listId = this.list._id;
+    data.listId = this.list._id;
 
-      noteService.createNote(data)
-      .then(note=> {
-        this.list.notes.push(note);
-        resolve(note);
-      })
-      .catch((err) =>{
-        alert('dat sho anint working at atll ');
-        reject(err);
-      });
+    noteService.createNote(data)
+    .then( note => {
+      this.list.notes.push(note);
+    })
+    .catch( () => {
+      alert('dat soe daint werk awt awl');
     });
   };
-  this.deleteNote =function(noteId){
-    $log.debug('listCtrl.deleteNote');
 
+  this.deleteNote = function(noteId){
+    $log.debug('listCtrl.deleteNote');
     noteService.deleteNote(noteId)
-    .then(()=> {
-      this.list.notes.forEach((note, index) => {
-        if(note._id === noteId) this.list.notes.splice(index, 1);
+    .then( () => {
+      this.list.notes.forEach( (note, index) => {
+        if (note._id === noteId) this.list.notes.splice(index, 1);
       });
     })
-    .catch(() =>{
-      alert('Dammit Jim');
+    .catch(() => {
+      alert('DERRRRRNN');
     });
   };
+
 }

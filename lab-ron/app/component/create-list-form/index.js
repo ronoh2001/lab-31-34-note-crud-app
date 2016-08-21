@@ -1,10 +1,10 @@
+
 'use strict';
 
 require('./create-list-form.scss');
 const angular = require('angular');
 
-angular.module('demoApp')
-.directive('appCreateListForm'), function(){
+angular.module('demoApp').directive('appCreateListForm', function(){
   return {
     restrict: 'E',
     replace: true,
@@ -12,9 +12,9 @@ angular.module('demoApp')
     controller: ['$log', 'listService', CreateListFormController],
     controllerAs: 'createListFormCtrl',
     bindToController: true,
-    scope: {}
+    scope:{}
   };
-};
+});
 
 function CreateListFormController($log, listService){
   this.list = {};
@@ -22,11 +22,11 @@ function CreateListFormController($log, listService){
   this.createList = function(){
     $log.debug('createListFormCtrl.createList');
     $log.log('this.list', this.list);
-    listService.createList(this.list).then(() => {
+    listService.createList(this.list).then( () => {
       this.list = {};
-    }).catch (() => {
+    }).catch( () => {
       this.list = {};
-      alert('that was not allowed');
+      alert('that was not alllowed');
     });
   };
 }

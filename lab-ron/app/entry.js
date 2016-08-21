@@ -8,14 +8,7 @@ require('./scss/base.scss');
 const angular = require('angular');
 
 // angular modules
-angular.module('demoApp', [])
-.config(['$httpProvider','$logProvider', function($httpProvider, $logProvider){
-  $logProvider.debugEnabled(__DEBUG__);
-  $httpProvider.defaults.headers = {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json'
-  };
-}]);
+angular.module('demoApp', []);
 
 // angular services
 require('./service/list-service');

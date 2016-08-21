@@ -22,6 +22,7 @@ function MainController(listService){
   })
   .catch((err) => {
     alert('that failed');
+    console.error(err);
 
   });
 }
