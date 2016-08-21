@@ -1,3 +1,5 @@
+/*global __API_URL__*/
+
 'use strict';
 
 const angular = require('angular');

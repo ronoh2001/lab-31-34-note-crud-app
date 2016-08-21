@@ -1,3 +1,4 @@
+/*global __API_URL__*/
 'use strict';
 
 const angular = require('angular');
@@ -7,6 +8,7 @@ angular.module('demoApp').factory('listService', ['$log', '$q', '$http', listSer
 function listService($log, $q, $http){
   let service = {};
   let url = `${__API_URL__}/api/list`;
+  // let debug = `${__DEBUG__}/api/list`;
   let config = {
     headers: {
       'Content-Type': 'application/json',
@@ -33,8 +35,8 @@ function listService($log, $q, $http){
     });
   };
 
-  service.fetchLists = function(){
-    $log.debug('listService.fetchLists');
+  service.fetchList = function(){
+    $log.debug('listService.fetchList');
     return $q((resolve, reject) => {
       $http.get(url, config)
         .then( res => {
